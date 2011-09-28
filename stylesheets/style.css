@@ -48,6 +48,10 @@ article footer {
   text-align: right;
 }
 
+article footer p {
+  text-align: right;
+}
+
 article footer ul.tags {
   display: inline;
   list-style-type: none;
