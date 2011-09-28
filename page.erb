@@ -1,0 +1,13 @@
+<article>
+  <header>
+    <h1><a href="<%= @entry.link %>"><%= @entry.title %></a></h1>
+  </header>
+  <section>
+    <%= @entry.body %>
+  </section>
+<% if logged_in? %>
+  <footer>
+    <p><a href="<%= @entry.edit_link %>"><%= t.edit %></a></p>
+  </footer>
+<% end %>
+</article>
