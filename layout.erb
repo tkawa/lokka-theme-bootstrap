@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <% if entry? %>
     <title><%= @entry.title %> - <%= @site.title %></title>
 <% else %>
@@ -10,39 +11,59 @@
     <meta name="description" content="<%= @site.meta_description %>" />
     <meta name="keywords" content="<%= @site.meta_keywords %>" />
     <link rel="alternate" href="/index.atom" type="application/atom+xml" />
-    <link rel="stylesheet" href="<%= @theme.path %>/stylesheets/style.css" />
+    <link rel="stylesheet" href="<%= @theme.path %>/style.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="<%= @theme.path %>/javascripts/bootstrap-collapse.js"></script>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
     <%= header %>
   </head>
   <body>
 
-    <div class="topbar">
-      <div class="fill">
-        <div class="container">
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
           <a class="brand" href="/"><%= @site.title %></a>
-          <ul class="nav">
-            <li><a href="/">Home</a></li>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><a href="/">Home</a></li>
 <% Page.all.each do |page| %>
-            <li><a href="<%= page.link %>"><%= page.title %></a></li>
+              <li><a href="<%= page.link %>"><%= page.title %></a></li>
 <% end %>
-          </ul>
-         <form class="pull-right" method="get" action="/search/">
-            <input type="text" name="query" placeholder="Search" />
-            <button class="btn" type="submit">Search</button>
-          </form>
+            </ul>
+            <form class="navbar-search form-search pull-right">
+              <input type="text" class="input-medium search-query">
+              <button type="submit" class="btn">Search</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="container">
-
-      <div class="content">
-        <div class="row">
-          <div class="span16">
-            <%= yield %>
-          </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header"><%= t('recent_entries') %></li>
+<% Post.recent(5).each do |post| %>
+                <li><%= link_to post.title, url(post.link) %></li>
+<% end %>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          <%= yield %>
         </div>
-      </div>
+      </div><!--/row-->
 
+      <hr>
       <footer>
         <p class="copy"><a href="/"><%= @site.title %></a></p>
         <p class="poweredby wide">powered by <a href="http://lokka.org/">Lokka</a></p>

@@ -7,7 +7,7 @@
   </section>
   <footer>
     <%= @entry.tags_to_html %>
-    <div class="comment"><%= comments_link(@entry.id, @entry.link) %></div>
+    <div class="comment"><%#= comments_link(@entry.id, @entry.link) %></div>
     <time datetime="<%= @entry.created_at.to_s %>"  pubdate="pubdate"><%= l @entry.created_at.to_time %></time>
 <% if logged_in? %>
     <p><a href="<%= @entry.edit_link %>"><%= t.edit %></a></p>

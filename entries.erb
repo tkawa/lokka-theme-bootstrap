@@ -8,7 +8,7 @@
   </section>
   <footer>
     <%= post.tags_to_html %>
-    <div class="comment"><%= comments_link(post.id, post.link) %></div>
+    <div class="comment"><%#= comments_link(post.id, post.link) %></div>
     <time datetime="<%= post.created_at.to_s %>"  pubdate="pubdate"><%= l post.created_at.to_time %></time>
 <% if logged_in? %>
     <p><a href="<%= post.edit_link %>"><%= t.edit %></a></p>
@@ -16,12 +16,13 @@
   </footer>
 </article>
 <% end %>
+
 <div class="pagination">
   <ul>
 <% if @posts.pager.previous_page %>
-    <li class="prev"><a href="?page=<%= @posts.pager.previous_page %>">&larr; Previous</a></li>
+    <li class="prev"><a href="?page=<%= @posts.pager.previous_page %>">«</a></li>
 <% else %>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+    <li class="prev disabled"><a href="#">«</a></li>
 <% end %>
 <% (1..@posts.pager.total_pages).map do |page| %>
 <% if page == @posts.pager.current_page %>
@@ -31,9 +32,9 @@
 <% end %>
 <% end %>
 <% if @posts.pager.next_page %>
-    <li class="next"><a href="?page=<%= @posts.pager.next_page %>">Next &rarr;</a></li>
+    <li class="next"><a href="?page=<%= @posts.pager.next_page %>">»</a></li>
 <% else %>
-    <li class="next disabled"><a href="#">Next &rarr;</a></li>
+    <li class="next disabled"><a href="#">»</a></li>
 <% end %>
   </ul>
 </div>
