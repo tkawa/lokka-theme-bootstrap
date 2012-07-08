@@ -4,8 +4,10 @@
 // @import "stylesheets/responsive";
 // @import "stylesheets/bootswatch/slate";
 
+@import "stylesheets/bootswatch/simplex-variables";
 @import "stylesheets/bootstrap";
 @import "stylesheets/responsive";
+@import "stylesheets/bootswatch/simplex";
 
 // fix for responsive design
 @media (min-width: 980px) {
