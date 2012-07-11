@@ -14,3 +14,17 @@
     padding-bottom: 20px;
   }
 }
+
+article footer ul.tags {
+  margin-left: auto;
+
+  li.tag {
+    display: inline;
+    margin: 0 1px;
+
+    a {
+      @extend .label;
+      @extend .label-info;
+    }
+  }
+}
