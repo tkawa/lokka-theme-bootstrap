@@ -6,3 +6,11 @@
 
 @import "stylesheets/bootstrap";
 @import "stylesheets/responsive";
+
+// fix for responsive design
+@media (min-width: 980px) {
+  body {
+    padding-top: 60px;
+    padding-bottom: 20px;
+  }
+}
